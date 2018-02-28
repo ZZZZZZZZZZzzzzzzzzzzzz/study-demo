@@ -1,0 +1,23 @@
+server:
+  port: 7878
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 10
+  context-path: /study-admin
+
+spring:
+  application:
+    name: study-admin
+  profiles:
+    active: dev
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  freemarker:
+    request-context-attribute: request
+    suffix: .html
+  mvc:
+    static-path-pattern: /statics/**
+
+

@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    type: org.apache.commons.dbcp2.BasicDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/study_admin?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: root
+    dbcp2:
+#      url: jdbc:mysql://localhost:3306/study_admin?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
+#      username: root
+#      password: root
+      initial-size: 10
+      max-idle: 50
+      min-idle: 12
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      max-wait-millis: 60000
+      max-conn-lifetime-millis: 1800000
+      validation-query: SELECT 1
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+logging:
+  path: logs
+  file: logs/dahuaMonitor.log
+  level: debug
+  pattern:
+    level: debug
