@@ -46,7 +46,7 @@ public class IndexController {
         return "modules/" + module + "/" + url;
     }
 
-    @RequestMapping(value = {"/", "index.html"})
+/*    @RequestMapping(value = {"/", "index.html"})
     public String index(){
         return "index";
     }
@@ -69,7 +69,7 @@ public class IndexController {
     @RequestMapping("404.html")
     public String notFound(){
         return "404";
-    }
+    }*/
 
     @RequestMapping("captcha.jpg")
     public void captcha(HttpServletResponse response, HttpSession session)throws IOException {
@@ -87,29 +87,5 @@ public class IndexController {
         ImageIO.write(image, "jpg", out);
     }
 
-//    /**
-//     * 登录
-//     */
-//    @ResponseBody
-//    @RequestMapping(value = "/sys/login", method = RequestMethod.POST)
-//    public R login(HttpSession session, String username, String password, String captcha) {
-//        Object kaptcha = session.getAttribute(Constants.KAPTCHA_SESSION_KEY);
-//        session.removeAttribute(Constants.KAPTCHA_SESSION_KEY);
-//        if( kaptcha == null || !captcha.equalsIgnoreCase(kaptcha.toString()) ){
-//            return R.error("验证码不正确");
-//        }
-//        if( username == null || username.trim().isEmpty() ){
-//            return R.error("用户名不能为空");
-//        }
-//        if( password == null || password.trim().isEmpty() ){
-//            return R.error("密码不能为空");
-//        }
-//        try {
-//            SecurityUser securityUser = (SecurityUser) sysUserService.loadUserByUsername(username);
-//            System.out.println();
-//        } catch (UsernameNotFoundException u){
-//            return R.error(u.getMessage());
-//        }
-//        return R.ok();
-//    }
+
 }

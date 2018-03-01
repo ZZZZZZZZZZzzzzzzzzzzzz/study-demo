@@ -2,6 +2,7 @@ package com.example.study.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
@@ -18,8 +19,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 public class StaticResourceConfig extends WebMvcConfigurerAdapter {
 
     @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//        super.addResourceHandlers(registry);
-        registry.addResourceHandler("/statics/**").addResourceLocations("classpath:/statics/");
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/login").setViewName("/login");
+        registry.addViewController("/404.html").setViewName("/404");
+        registry.addViewController("/index").setViewName("/index");
+        registry.addViewController("/").setViewName("/index");
     }
 }

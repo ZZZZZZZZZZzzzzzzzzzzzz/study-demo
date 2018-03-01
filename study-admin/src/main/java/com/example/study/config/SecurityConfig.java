@@ -1,8 +1,6 @@
 package com.example.study.config;
 
-import com.example.study.service.impl.SysUserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -30,13 +28,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        super.configure(auth);
         auth.userDetailsService(userDetailsService);
     }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-//        super.configure(web);
         web.ignoring().antMatchers("/statics/**", "classpath:/statics/**");
     }
 
@@ -47,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                   .antMatchers("/captcha.jpg","/404.html").permitAll()
                   .anyRequest().authenticated()
                   .and().rememberMe().tokenValiditySeconds(60 * 60 * 24 * 7).key("SECURITY_KEY")
-                  .and().formLogin().loginPage("/login.html").defaultSuccessUrl("/index.html").permitAll()
+                  .and().formLogin().loginPage("/login").defaultSuccessUrl("/index").permitAll()
                   .and().logout().permitAll()
                   .and().csrf().disable();
     }

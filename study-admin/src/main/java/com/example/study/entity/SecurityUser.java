@@ -36,7 +36,7 @@ public class SecurityUser extends SysUser implements UserDetails {
         List<GrantedAuthority> authorities = new ArrayList<>();
         Set<SysRole> roles = getRoles();
         roles.forEach(role -> {
-            GrantedAuthority g = new SimpleGrantedAuthority(role.getCode());
+            GrantedAuthority g = new SimpleGrantedAuthority("ROLE_" + role.getCode());
             authorities.add(g);
         });
         return authorities;
